@@ -1,0 +1,17 @@
+{
+    "TITLE":"Soldier",
+    "MAP_H":30,
+    "MAP_W":30,
+    "WIDTH":500,
+    "HEIGHT":750,
+    "TITLE_SCENE":0,
+    "GAME_SCENE":1,
+    "RESULT_SCENE":2,
+    "Map_Date": [
+        [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+    ],
+    "PLAYER":{
+        "hp":10,
+        "moving_distance":10
+    }
+}
