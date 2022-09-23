@@ -41,8 +41,7 @@ def init(self):
 
     px.load("game.pyxres")
     self.player = Player()
-    self.map_date = js_config["map_tips"]
-    self.map_tips = np.zeros((MAP_WIDTH,MAP_HEIGHT))
+    self.map_tips = js_config["map_tips"]
 
 
 class Player:
@@ -61,16 +60,16 @@ class Player:
 
     def update(self) -> None:
 
-        if px.btn(px.KEY_UP) or px.btnp(px.KEY_W):
+        if px.btnp(px.KEY_UP) or px.btnp(px.KEY_W):
             self.y -= self.moving_distance
             self.player_facing = 3
-        elif px.btn(px.KEY_DOWN) or px.btnp(px.KEY_S):
+        elif px.btnp(px.KEY_DOWN) or px.btnp(px.KEY_S):
             self.player_facing = 0
             self.y += self.moving_distance
-        elif px.btn(px.KEY_LEFT) or px.btnp(px.KEY_A):
+        elif px.btnp(px.KEY_LEFT) or px.btnp(px.KEY_A):
             self.player_facing = 1
             self.x -= self.moving_distance
-        elif px.btn(px.KEY_RIGHT) or px.btnp(px.KEY_D):
+        elif px.btnp(px.KEY_RIGHT) or px.btnp(px.KEY_D):
             self.player_facing = 2
             self.x += self.moving_distance
 
