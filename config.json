@@ -1,13 +1,13 @@
 {
     "TITLE":"Soldier",
-    "WIDTH":600,
-    "HEIGHT":750,
+    "WIDTH":900,
+    "HEIGHT":800,
     "TITLE_SCENE":0,
     "GAME_SCENE":1,
     "RESULT_SCENE":2,
     "MAP":{
-        "WIDTH":30,
-        "HEIGHT":30,
+        "WIDTH":25,
+        "HEIGHT":25,
         "EVENT": [],
         "tile_size": 32
     },
