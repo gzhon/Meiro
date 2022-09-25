@@ -11,17 +11,23 @@ WIDTH = js_config["WIDTH"]
 HEIGHT = js_config["HEIGHT"]
 
 GAME_SCENE = js_config["GAME_SCENE"]
+TILE_SIZE = js_config["MAP"]["tile_size"]
 
 def update(self):
 
-    if px.btnp(px.KEY_SPACE):
+    if px.btnp(px.KEY_SPACE) or px.btnp(px.MOUSE_BUTTON_LEFT):
         game.init(self)
         self.scene = GAME_SCENE
 
 def draw(self):
 
-    pass
+    px.blt(
+        (WIDTH/2),(HEIGHT/2),0,0,0,32,32,5
+    )
+    px.blt(
+        200,200, 2, 0, 0, 32, 24, 7
+    )
 
 def init(self):
 
-    pass
+    px.load("game.pyxres")
