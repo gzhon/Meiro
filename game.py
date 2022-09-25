@@ -189,11 +189,17 @@ def time_to_ms(time):
 def init(self):
 
     global map_tips, is_start, is_finsh, enemy_obj, is_game_over
+    global scene_sec,play_time,start_time,finsh_time,scene_frame_count
 
     is_start = False
     is_finsh = False
     is_game_over = False
     px.load("game.pyxres")
+    scene_sec = 0
+    play_time = ""
+    start_time = 0
+    finsh_time = 0
+    scene_frame_count = 0
     self.player = Player()
     map_dates = json.load(open("map_tips.json", "r"))
     map_tips = map_dates["map_tips"]
