@@ -27,10 +27,9 @@ class App:
         self.scene = TITLE_SCENE
         self.mode=0
 
-        title.init(self=self)
-
         px.init(WIDTH, HEIGHT,fps=30)
         px.mouse(True)
+        title.init(self=self)
         px.run(self.update, self.draw)
 
     def update(self):
