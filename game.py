@@ -31,15 +31,19 @@ scene_frame_count = 0
 
 def update(self):
 
+    global player
     global scene_frame_count, is_start, scene_sec, start_time
     scene_frame_count += 1
     scene_sec = scene_frame_count // 30
     if scene_sec >= 3:
         if is_finsh == False:
             is_start = True
-            self.player.update()
+            player.update()
             for i in range(len(enemy_obj)):
-                enemy_obj[i].update()
+                if enemy_obj[i].is_alive == True:
+                    enemy_obj[i].update(
+                        player.x,player.y
+                    )
     if is_finsh == True or is_game_over == True:
         if px.btnp(px.KEY_SPACE):
             self.scene = TITLE_SCENE
@@ -143,7 +147,8 @@ def draw(self):
     )
     self.player.draw()
     for i in range(len(enemy_obj)):
-        enemy_obj[i].draw()
+        if enemy_obj[i].is_alive == True:
+            enemy_obj[i].draw()
 
 
 def drawing_map(self):
@@ -188,6 +193,7 @@ def time_to_ms(time):
 
 def init(self):
 
+    global player
     global map_tips, is_start, is_finsh, enemy_obj, is_game_over
     global scene_sec,play_time,start_time,finsh_time,scene_frame_count
 
@@ -200,14 +206,14 @@ def init(self):
     start_time = 0
     finsh_time = 0
     scene_frame_count = 0
-    self.player = Player()
+    player = Player()
     map_dates = json.load(open("map_tips.json", "r"))
     map_tips = map_dates["map_tips"]
     map_tips = np.array(map_tips)
     map_tips = np.rot90(map_tips, -3)
     map_tips = np.flipud(map_tips)
     enemy_obj = []
-    enemt_pos = [[1, 1], [23, 1]]
+    enemt_pos = [[1, 1], [17, 19]]
     for i in range(len(enemt_pos)):
         enemy_obj.append(Enemy(enemt_pos[i][0], enemt_pos[i][1]))
 
@@ -314,9 +320,10 @@ class Enemy:
 
         self.x = x
         self.y = y
-        self.player_facing = 0
+        self.is_alive = True
+        self.enemy_facing = 0
 
-    def update(self):
+    def update(self,ex,ey):
 
         pass
 
@@ -327,7 +334,7 @@ class Enemy:
             self.y * TILE_SIZE,
             1,
             0,
-            self.player_facing * 32,
+            self.enemy_facing * 32,
             32,
             32,
             1,
